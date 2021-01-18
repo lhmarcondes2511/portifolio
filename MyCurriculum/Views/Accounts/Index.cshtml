@@ -1,0 +1,133 @@
+﻿@model IEnumerable<MyCurriculum.Models.Account>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+@* Imports *@
+@@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
+@* Geral *@
+body {
+    background-color: #34495e;
+}
+
+header, footer {
+    display: none;
+}
+
+
+@* Tela de Login *@
+.lh-Geral {
+    margin-top: 5%;
+    background-color: #fff;
+    height: auto;
+    width: 40%;
+    padding: 20px;
+    box-shadow: 0px 0px 10px midnightblue;
+}
+
+.lh-title p {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20pt;
+}
+
+.lh-hr {
+    border-bottom: 0.05px solid midnightblue;
+    width: 80%;
+}
+
+.lh-footerBtn {
+    background-color: midnightblue;
+    color: #fff;
+    margin-right: 20px;
+}
+
+.lh-forgetAndNew {
+    margin-top: 20px;
+}
+
+.lh-forgetAndNew a {
+    color: midnightblue;
+}
+
+.lh-forgetAndNew a:hover, .lh-footerBtn:hover {
+    color: darkcyan;
+    text-decoration: none;
+}
+
+@@media (max-width: 991.98px) {
+    .lh-Geral {
+        margin-top: 10%;
+        background-color: #fff;
+        height: auto;
+        width: 80%;
+        padding: 20px;
+        box-shadow: 0px 0px 10px midnightblue;
+    }
+
+    .lh-new {
+        margin-top: 10px;
+    }
+
+    .lh-back {
+        padding: 9px 2px;
+        color: #fff;
+    }
+}
+
+
+@* Botão Voltar *@
+.lh-btnBack {
+    position: relative;
+    margin-top: 5%;
+    border: 1px solid darkcyan;
+    background-color: darkcyan;
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+}
+
+.lh-back {
+    padding: 7px 2px;
+    color: #fff;
+}
+
+</style>
+<a asp-area="" asp-controller="Accounts" asp-action="Back">
+    <div class="lh-btnBack">
+        <div class="lh-back text-center">
+            <i class="fas fa-angle-left"></i>
+        </div>
+    </div>
+</a>
+<div class="lh-Geral container">
+    <div class="lh-title text-center">
+        <p>Login</p>
+    </div>
+    <hr class="lh-hr" />
+    <div class="lh-formLogin">
+        <form class="row" method="post">
+            <div class="form-group col-lg-12">
+                <label for="email">E-mail</label>
+                <input type="email" class="form-control" id="email" placeholder="E-mail">
+            </div>
+            <div class="form-group col-lg-12">
+                <label for="pass">Senha</label>
+                <input type="password" class="form-control" id="pass" placeholder="Senha">
+            </div>
+            <div class="ml-auto">
+                <input type="submit" name="submit" class="btn btn-lg lh-footerBtn" value="Log In" />
+            </div>
+        </form>
+    </div>
+    <div class="lh-forgetAndNew row">
+        <div class="lh-forget col-12 col-lg-6 col-md-12 col-sm-12 text-center">
+            <a href="#">Esqueceu a senha?</a>
+        </div>
+        <div class="lh-new col-12 col-lg-6 col-md-12 col-sm-12 text-center">
+            <a href="#">Cadastrar Usuário</a>
+        </div>
+    </div>
+</div>

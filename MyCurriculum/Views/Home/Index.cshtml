@@ -1,0 +1,495 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+@* Imports *@
+@@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
+@* Content *@
+.lh-barraAzul {
+    background-color: #34495e;
+    position: relative;
+}
+
+.lh-barraContent {
+    height: 200px;
+    width: 100%;
+}
+
+.lh-nameComplete {
+    color: #fff;
+    padding: 10px;
+}
+
+.lh-imagePerson {
+    position: relative;
+    margin-top: -150px;
+}
+
+.lh-imageContent {
+    border: 5px solid #34495e;
+    margin-top: 10px;
+    border-radius: 175px;
+    width: 250px;
+}
+
+.lh-content {
+    margin-top: 50px;
+}
+
+.lh-contentGeneral {
+    font-family: Tahoma;
+}
+
+.lh-contentGeneral::first-letter {
+    margin-left: 40px;
+}
+
+.lh-titleLanguage {
+    font-family: 'Quicksand', sans-serif;
+}
+
+.lh-languageGeral {
+    margin: 50px 0px;
+}
+
+.lh-hr1 {
+    border-bottom: 1px solid #34495e;
+    box-shadow: 0px 0px 8px #34495e;
+    opacity: 0.4;
+    width: 80%;
+}
+
+@* Código Pronto *@
+@@media (min-width: 768px) and (max-width: 991px) {
+    /* Show 4th slide on md if col-md-4*/
+    .carousel-inner .active.col-md-4.carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: absolute;
+        top: 0;
+        right: -33.3333%;  /*change this with javascript in the future*/
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+}
+
+@@media (min-width: 576px) and (max-width: 768px) {
+    /* Show 3rd slide on sm if col-sm-6*/
+    .carousel-inner .active.col-sm-6.carousel-item + .carousel-item + .carousel-item {
+        position: absolute;
+        top: 0;
+        right: -50%;  /*change this with javascript in the future*/
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+}
+
+@@media (min-width: 576px) {
+    .carousel-item {
+        margin-right: 0;
+    }
+    /* show 2 items */
+    .carousel-inner .active + .carousel-item {
+        display: block;
+    }
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item {
+        transition: none;
+    }
+    .carousel-inner .carousel-item-next {
+        position: relative;
+        transform: translate3d(0, 0, 0);
+    }
+    /* left or forward direction */
+    .active.carousel-item-left + .carousel-item-next.carousel-item-left,
+    .carousel-item-next.carousel-item-left + .carousel-item,
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+    /* farthest right hidden item must be also positioned for animations */
+    .carousel-inner .carousel-item-prev.carousel-item-right {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+    /* right or prev direction */
+    .active.carousel-item-right + .carousel-item-prev.carousel-item-right,
+    .carousel-item-prev.carousel-item-right + .carousel-item,
+    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
+}
+/* MD */
+@@media (min-width: 768px) {
+    /* show 3rd of 3 item slide */
+    .carousel-inner .active + .carousel-item + .carousel-item {
+        display: block;
+    }
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item {
+        transition: none;
+    }
+    .carousel-inner .carousel-item-next {
+        position: relative;
+        transform: translate3d(0, 0, 0);
+    }
+    /* left or forward direction */
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+    /* right or prev direction */
+    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
+}
+/* LG */
+@@media (min-width: 991px) {
+    /* show 4th item */
+    .carousel-inner .active + .carousel-item + .carousel-item + .carousel-item {
+        display: block;
+    }
+    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item + .carousel-item {
+        transition: none;
+    }
+    /* Show 5th slide on lg if col-lg-3 */
+    .carousel-inner .active.col-lg-3.carousel-item + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: absolute;
+        top: 0;
+        right: -25%;  /*change this with javascript in the future*/
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+    /* left or forward direction */
+    .carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+    /* right or prev direction //t - previous slide direction last item animation fix */
+    .carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item + .carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
+}
+@* Fim Código Pronto*@
+
+
+
+@* Phone *@
+@@media (max-width: 991.98px) {
+    .lh-content2 {
+        margin-top: 20px;
+    }
+
+    .lh-footerContent2 {
+        margin-top: 20px;
+    }
+}
+
+@@media (max-width: 768px) {
+    .lh-barraContent {
+        height: 150px;
+        width: 100%;
+    }
+
+    .lh-imagePerson {
+        position: relative;
+        margin-top: -120px;
+    }
+
+    .lh-imageContent {
+        border: 5px solid #34495e;
+        margin-top: 10px;
+        border-radius: 100px;
+        width: 200px;
+    }
+}
+
+@* Footer *@
+.lh-footer {
+    margin-top: 30px;
+    background-color: #34495e;
+    height: auto;
+    width: 100%;
+    padding: 20px
+}
+
+.lh-footerTitleTxt {
+    color: #fff;
+    font-size: 18pt;
+    font-family: Tahoma;
+    padding-top: 10px;
+}
+
+.lh-hr {
+    border-bottom: 0.05px solid #fff;
+    width: 80%;
+}
+
+.lh-footerContent1, .lh-footerContent2 {
+    color: #ffff;
+    font-family: Tahoma;
+}
+
+.lh-footerBtn {
+    background-color: midnightblue;
+    color: #fff;
+    margin-right: 20px;
+}
+
+.lh-ulFooter a, .lh-footerContent21 a {
+    color: dodgerblue;
+}
+
+.lh-ulFooter a:hover, .lh-footerContent21 a:hover, .lh-footerBtn:hover {
+    color: darkcyan;
+    text-decoration: none;
+}
+
+.lh-titleRedeSocial {
+    margin: 10px 0px;
+}
+
+.lh-titleRedeSocial p {
+    font-family: 'Quicksand', sans-serif;
+}
+
+.lh-curriculumA {
+    vertical-align: text-bottom;
+}
+
+.lh-ulFooter li {
+    list-style: none;
+    margin: 2.5px 0px;
+}
+</style>
+
+<div class="lh-barraAzul">
+    <div class="lh-barraContent"></div>
+</div>
+<div class="text-center lh-imagePerson">
+    <img src="~/img/myperson.jpg" class="lh-imageContent" alt="Foto de Perfil" />
+</div>
+
+@* Conteudo Principal *@
+<div class="lh-content row container">
+    <div class="lh-contentGeneral col-lg-6 col-sm-12 text-justify">
+        lorem ipsum dolor sit amet consectetur adipiscing elit parturient faucibus congue ante massa viverra facilisi rhoncus cubilia luctus praesent porta malesuada platea penatibus pharetra cras a donec velit varius ullamcorper gravida ex efficitur ultrices eleifend vitae vehicula lacinia quis vel pulvinar est nostra accumsan mus augue ac fringilla venenatis commodo in mi enim fusce ornare sem at nunc nulla nec mollis tortor eget turpis habitant laoreet sapien lobortis ridiculus posuere pretium dictum auctor ligula odio ad conubia arcu duis suspendisse himenaeos class eros nisi pellentesque sociosqu vulputate dui nibh molestie hendrerit quam nam risus ultricies potenti mauris aptent justo tincidunt
+    </div>
+    <div class="lh-contentGeneral col-lg-6 col-sm-12 text-justify">
+        lorem ipsum dolor sit amet consectetur adipiscing elit parturient faucibus congue ante massa viverra facilisi rhoncus cubilia luctus praesent porta malesuada platea penatibus pharetra cras a donec velit varius ullamcorper gravida ex efficitur ultrices eleifend vitae vehicula lacinia quis vel pulvinar est nostra accumsan mus augue ac fringilla venenatis commodo in mi enim fusce ornare sem at nunc nulla nec mollis tortor eget turpis habitant laoreet sapien lobortis ridiculus posuere pretium dictum auctor ligula odio ad conubia arcu duis suspendisse himenaeos class eros nisi pellentesque sociosqu vulputate dui nibh molestie hendrerit quam nam risus ultricies potenti mauris aptent justo tincidunt
+    </div>
+</div>
+
+
+@* Linguagens *@
+<div class="lh-languageGeral">
+    <h1 class="text-center mb-2 lh-titleLanguage">Minhas Linguagens</h1>
+    <hr class="lh-hr1" />
+    <div id="carousel-example" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner row w-100 mx-auto" role="listbox">
+            <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3 active">
+                <div class="card">
+                    <img src="~/img/bootstrapLogo1.png" class="img-fluid mx-auto d-block" alt="Bootstrap">
+                    <div class="card-body">
+                        <h5 class="card-title">Bootstrap</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card">
+                    <img src="~/img/cSharpLogo1.png" class="img-fluid mx-auto d-block" alt="CSharp">
+                    <div class="card-body">
+                        <h5 class="card-title">C#</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card">
+                    <img src="~/img/cssLogo1.png" class="img-fluid mx-auto d-block" alt="CSS">
+                    <div class="card-body">
+                        <h5 class="card-title">CSS</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card">
+                    <img src="~/img/htmlLogo1.png" class="img-fluid mx-auto d-block" alt="HTML">
+                    <div class="card-body">
+                        <h5 class="card-title">HTML</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card">
+                    <img src="~/img/javaLogo1.png" class="img-fluid mx-auto d-block" alt="Java">
+                    <div class="card-body">
+                        <h5 class="card-title">Java</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card">
+                    <img src="~/img/javascriptLogo1.png" class="img-fluid mx-auto d-block" alt="JavaScript">
+                    <div class="card-body">
+                        <h5 class="card-title">JavaScript</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card">
+                    <img src="~/img/nodeLogo1.png" class="img-fluid mx-auto d-block" alt="NodeJs">
+                    <div class="card-body">
+                        <h5 class="card-title">Node Js</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carousel-example" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel-example" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+
+
+@* Footer *@
+<div class="lh-footer">
+    <div class="lh-footerTitle text-center">
+        <p class="lh-footerTitleTxt">Contatos</p>
+    </div>
+    <hr class="lh-hr" />
+    <div class="lh-footerContent row">
+    
+        @* Lado Left *@
+        <div class="lh-footerContent1 col-lg-6 col-sm-12">
+            <div class="lh-titleRedeSocial container">
+                <p>Redes Sociais</p>
+            </div>
+            <ul class="lh-ulFooter">
+                <li>
+                    <div class="row">
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-1">
+                            <img class="lh-imgFooter" src="~/img/whatsAppLogo1.png" alt="WhatsApp" />
+                        </div>
+                        <p class="lh-pFooter col-lg-11 col-md-11 col-sm-11 col-11">WhatsApp: (12) 3 4567-8910</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="row">
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-1">
+                            <img class="lh-imgFooter" src="~/img/facebookLogo1.png" alt="Facebook" />
+                        </div>
+                        <p class="lh-pFooter col-lg-11 col-md-11 col-sm-11 col-11">Facebook: facebook.com/lhmarcondes</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="row">
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-1">
+                            <img class="lh-imgFooter" src="~/img/githubLogo1.png" alt="GitHub" />
+                        </div>
+                        <p class="lh-pFooter col-lg-11 col-md-11 col-sm-11 col-11">GitHub: github.com/lhmarcondes2511</p>
+                    </div>
+                </li>
+            </ul>
+            <div class="lh-titleRedeSocial container">
+                <p>Curriculum em PDF</p>
+                <ul class="lh-ulFooter">
+                    <li>
+                        <div class="row">
+                            <a href="~/pdf/Curriculo.pdf">
+                                <div>
+                                    <img class="col-lg-3 col-md-3 col-sm-3 col-3" src="~/img/curriculumLogo1.png" alt="Curriculum Vitae" />
+                                    <b class="col-lg-10 col-md-10 col-sm-10 col-10 lh-curriculumA">MeuCurriculumVitae.pdf</b>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        @* Lado Right *@
+        <div class="lh-footerContent2 container col-lg-6 col-sm-12">
+            <div class="lh-footerContent21 container">
+                <p>Caso queira entrar em contato pelo E-mail, basta clicar abaixo ou preencher o formulário</p>
+                E-mail: <a href="mailto:lucashenrique125@hotmail.com">lucashenrique125@hotmail.com</a>
+            </div>
+            <br /><br />
+            <div class="lh-footerContent22 container">
+                <form class="row" method="post">
+                    <div class="col-9 form-group">
+                        <input class="form-control" type="text" name="name" placeholder="Nome" />
+                    </div>
+                    <div class="col-9 form-group">
+                        <input class="form-control" type="text" name="email" placeholder="E-mail" />
+                    </div>
+                    <div class="col-7 form-group">
+                        <input class="form-control" type="text" name="tel" placeholder="Telefone" />
+                    </div>
+                    <div class="col-12 form-group">
+                        <textarea class="form-control" placeholder="Texto" rows="5"></textarea>
+                    </div>
+                    <div class="ml-auto">
+                        <input type="submit" name="submit" class="btn btn-lg lh-footerBtn" value="Enviar" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@* Scripts *@
+<script>
+$('#carousel-example').on('slide.bs.carousel', function (e) {
+    var $e = $(e.relatedTarget);
+    var idx = $e.index();
+    var itemsPerSlide = 5;
+    var totalItems = $('.carousel-item').length;
+
+    if (idx >= totalItems - (itemsPerSlide - 1)) {
+        var it = itemsPerSlide - (totalItems - idx);
+        for (var i = 0; i < it; i++) {
+            if (e.direction == "left") {
+                $('.carousel-item').eq(i).appendTo('.carousel-inner');
+            }else {
+                $('.carousel-item').eq(0).appendTo('.carousel-inner');
+            }
+        }
+    }
+});
+
+</script>
